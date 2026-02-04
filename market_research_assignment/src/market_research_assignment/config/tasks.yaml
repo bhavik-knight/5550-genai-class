@@ -1,0 +1,26 @@
+research_task:
+  description: >
+    1. Identify and summarize the core business of {company_domain}, including its mission and primary products/services.
+    2. Analyze the current target market and customer segments the company serves.
+    3. Investigate recent company news, press releases, and significant financial or technological updates from {current_year}.
+    4. Conduct a competitor landscape analysis to identify at least 3-5 direct and indirect rivals.
+  expected_output: >
+    1. A detailed company profile including a product/service inventory.
+    2. A target audience breakdown with demographic or industry specifics.
+    3. A bulleted list of the top 5 most impactful recent news items.
+    4. A comparative list of competitors with their market positioning relative to {company_domain}.
+  agent: researcher
+
+analysis_task:
+  description: >
+    1. Synthesize the gathered research to draft a professional Executive Summary highlighting the company's current market standing.
+    2. Perform a comprehensive SWOT Analysis, identifying at least 4 points for each quadrant: Strengths, Weaknesses, Opportunities, and Threats.
+    3. Develop 4+ actionable Strategic Recommendations based on the SWOT findings to improve the company's competitive edge.
+    4. Compile all sections into a clean Markdown structure, ensuring no code blocks (```) are included in the final text.
+  expected_output: >
+    1. An Executive Summary (min. 4 key insights) providing a high-level overview of the strategic landscape.
+    2. A formatted SWOT Analysis table or list with 4 distinct points for Strengths, Weaknesses, Opportunities, and Threats.
+    3. A Strategic Recommendations section featuring 4 specific, data-driven advice points for future growth.
+    4. A valid Markdown (.md) file saved to the output/ directory containing all the above sections.
+  agent: analyst
+  output_file: output/{company_domain}_report.md
