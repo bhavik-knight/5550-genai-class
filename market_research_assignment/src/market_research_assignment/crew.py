@@ -2,6 +2,8 @@ from pathlib import Path
 from crewai import Agent, Task, Crew, Process, LLM
 from crewai.project import CrewBase, agent, crew, task
 from .tools.serper_search_tool import search_tool
+import os
+from dotenv import load_dotenv
 
 @CrewBase
 class MarketResearchAssignment:
@@ -10,11 +12,12 @@ class MarketResearchAssignment:
     # These paths are relative to the file when using @CrewBase
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
+    load_dotenv()
 
     def __init__(self):
         # Initialize the LLM
         self.llm = LLM(
-            model="gemini/gemini-2.5-flash",
+            model=os.getenv("MODEL"),
             temperature=0.1
         )
         self.output_dir = Path("output")

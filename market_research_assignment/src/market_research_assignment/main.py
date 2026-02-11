@@ -20,15 +20,43 @@ def run():
     """
     Run the crew.
     """
+    print("Welcome to the Market Research Crew!")
+    print("Please select the companies you want to research from the list below:")
+    
+    companies = [
+        "stripe.com",
+        "espncricinfo.com",
+        "olympics.com",
+        "imdb.com",
+        "ibm.com"
+    ]
+    
+    for i, company in enumerate(companies, 1):
+        print(f"{i}) {company}")
+        
+    try:
+        user_input = input("Enter the number of the company you want to research: ")
+        selected_index = int(str.strip(user_input))
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        return
+    
+    if 1 <= selected_index <= len(companies):
+        selected_domain = companies[selected_index - 1]
+    else:
+        print(f"Invalid choice. Please select a number between 1 and {len(companies)}.")
+        return
+
+    print(f"\nProcessing research for: {selected_domain}")
     inputs = {
-        'company_domain': 'stripe.com',
+        'company_domain': selected_domain,
         'current_year': str(datetime.now().year)
     }
 
     try:
         MarketResearchAssignment().crew().kickoff(inputs=inputs)
     except Exception as e:
-        raise Exception(f"An error occurred while running the crew: {e}")
+        raise Exception(f"An error occurred while running the crew for {selected_domain}: {e}")
 
 
 def train():
